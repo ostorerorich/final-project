@@ -1,0 +1,17 @@
+<h2 class="m-4">Editar Post</h2>
+
+<form action="/posts/{{post.id}}?_method=PUT" method="POST">
+
+    <div class="form-control">
+        <label for="title" class="form-label">Título</label>
+        <input type="email" class="form-control" id="title" name="title" value="{{post.title}}">
+    </div>
+
+    <div class="form-control">
+        <label for="body" class="form-label">Cuerpo</label>
+        <textarea class="form-control" id="body" name="body" rows="3">{{post.body}}</textarea>
+    </div>
+
+    <button class="btn btn-primary mt-4">Enviar</button>
+
+</form>
