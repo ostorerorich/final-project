@@ -1,17 +1,19 @@
-<h2 class="m-4">Editar Post</h2>
+<div class="edit_post">
+  <h2>Editar Post</h2>
 
-<form action="/posts/{{post.id}}?_method=PUT" method="POST">
+  <form action="/posts/{{postId}}?_method=PUT" method="PUT" class="edit_form">
 
-    <div class="form-control">
-        <label for="title" class="form-label">Título</label>
-        <input type="email" class="form-control" id="title" name="title" value="{{post.title}}">
+    <div class="edit_label">
+      <label for="title">Título</label>
+      <input type="text" class="edit_input" id="title" name="title" value="{{post.title}}" />
     </div>
 
-    <div class="form-control">
-        <label for="body" class="form-label">Cuerpo</label>
-        <textarea class="form-control" id="body" name="body" rows="3">{{post.body}}</textarea>
+    <div class="edit_label">
+      <label for="body">Contenido</label>
+      <textarea class="edit_input" id="body" name="body" rows="3">{{post.body}}</textarea>
     </div>
 
-    <button class="btn btn-primary mt-4">Enviar</button>
+    <button class="edit_btn">Enviar</button>
 
-</form>
+  </form>
+</div>

@@ -1,7 +1,7 @@
 const express = require('express')
 const routerDev = express.Router()
 
-const Post = require('../models/posts')
+const Post = require('../models/Post.model')
 
 const { generatePost } = require('../helpers/posts')
 

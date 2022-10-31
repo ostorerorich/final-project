@@ -1,0 +1,11 @@
+<header class="header_main">
+    <div class="header_logo"><a href="/"><span class="logo_sb">SB</span>log</a></div>
+    {{#if user}}
+    <div class="header_login"><a href="/auth/logout" >Logout</a></div>
+    {{else}}
+    <div class="header_login">
+        <a href="/auth/signin" >Login</a>
+        <a href="/auth/signup" >Sign Up</a>
+        </div>
+    {{/if}}
+</header>

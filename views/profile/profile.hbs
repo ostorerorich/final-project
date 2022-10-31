@@ -1,0 +1,26 @@
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
+
+    <div class="col-12 col-md-2 card">
+        <h3 class="">{{userProfile.name}}</h3>
+        <img class="" src="{{userProfile.avatar}}" alt="Avatar">
+        <span class="">Posts: {{userPost.length}}</span>
+
+    </div>
+
+    <div class="col-12 col-md-10">
+
+
+
+        <div class="list-group">
+            <span class="list-group-item active">Posts Creados</span>
+            {{#each userPost}}
+
+            <a class="list-group-item list-group-item-action list-group-item-light"
+                href="/posts/{{this.slug}}">{{this.title}}</a>
+
+            {{/each}}
+        </div>
+
+    </div>
+
+</div>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { default: slugify } = require('slugify')
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const postSchema = new mongoose.Schema(
     {
@@ -11,19 +12,30 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        user: {
+            type: String,
+            required: true
+        },
         slug: {
             type: String,
             required: true,
             unique: true
+        },
+        image: {
+            type: String,
+            default: '/uploads/none.jpg'
         }
     },
     {
-        versionKey: false
+        versionKey: false,
+        timestamps: true
     }
 )
 
 // Middleware .pre()
 // TODO: Llevar este middleware a un archivo separado
+
+postSchema.plugin(mongoosePaginate)
 
 postSchema.pre('validate', function(next) {
     if(this.title) {
