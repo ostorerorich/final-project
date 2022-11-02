@@ -1,36 +1,45 @@
 
-<div class="col">
-    <form action="/auth/signup" method="POST">
+<div class="row justify-content-center d-flex mt-5 ">
+    <div class="col-12 col-sm-12 col-md-6">
+
+    <form action="/auth/signup" class="card border-secondary" method="POST">
+        <div class="card-header">Crear Usuario</div>
         {{!-- Nombre --}}
-        <div class="form-control">
+        <div class="card-body">
+
+        <div class="form-group">
             <label for="name" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese su nombre"
                 value={{name}}>
         </div>
 
         {{!-- Correo --}}
-        <div class="form-control">
+        <div class="form-group">
             <label for="email" class="form-label">Correo Electronico</label>
             <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electronico"
                 value={{email}}>
         </div>
 
         {{!-- Password --}}
-        <div class="form-control">
-            <label for="password" class="form-label">Correo Electronico</label>
+        <div class="form-group">
+            <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="password" name="password"
                 placeholder="Ingrese su contraseña">
         </div>
 
         {{!-- Confirm Password --}}
-        <div class="form-control">
-            <label for="confirm_password" class="form-label">Correo Electronico</label>
+        <div class="form-group">
+            <label for="confirm_password" class="form-label">Repetir Contraseña</label>
             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                 placeholder="Ingrese repita su contraseña">
         </div>
 
-        <button class="btn btn-primary">
+        <button class="btn btn-primary w-100 mt-4">
             Signup
         </button>
+
+        </div>
+       
     </form>
+    </div>
 </div>

@@ -1,28 +1,28 @@
 <div class="row justify-content-center">
   <div class="col-8">
-    <h2>Crear Post</h2>
 
-    <form action="/posts" method="POST" class="create_form" enctype="multipart/form-data">
+    <form action="/posts" method="POST" class="card" enctype="multipart/form-data">
+<div class="card-header">Crear Post</div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="title" class="form-label mt-4">Título</label>
+          <input type="text" class="form-control" id="title" name="title" maxlength="35"
+            placeholder="Ingrese el título del post" />
+        </div>
 
-      <div class="form-group">
-        <label for="title" class="form-label mt-4">Título</label>
-        <input type="text" class="form-control" id="title" name="title" maxlength="35"
-          placeholder="Ingrese el título del post" />
+        <div class="form-group">
+          <label for="image" class="form-label mt-4">Imagen</label>
+          <input type="file" name="image" id="image" class="form-control">
+        </div>
+
+        <div id="froala" class="form-group">
+          <label for="body" class="form-label mt-4">Cuerpo</label>
+          <textarea class="form-control" id="body" name="body" rows="5"
+            placeholder="Ingrese el cuerpo del post"></textarea>
+        </div>
+
+        <button class="btn btn-primary m-4">Enviar</button>
       </div>
-
-      <div class="form-group">
-        <label for="image" class="form-label mt-4">Imagen</label>
-        <input type="file" name="image" id="image" class="form-control">
-      </div>
-
-      <div id="froala" class="form-group">
-        <label for="body" class="form-label mt-4">Cuerpo</label>
-        <textarea class="form-control" id="body" name="body" rows="5"
-          placeholder="Ingrese el cuerpo del post"></textarea>
-      </div>
-
-      <button class="btn btn-primary m-4">Enviar</button>
-
     </form>
   </div>
 </div>

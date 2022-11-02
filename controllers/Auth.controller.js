@@ -1,8 +1,8 @@
-const { response } = require("express");
-const passport = require("passport");
+const { response } = require('express')
+const passport = require('passport')
 
-const Auth = require("../models/Auth.model");
-const Posts = require("../models/Post.model");
+const Auth = require('../models/Auth.model')
+const Posts = require('../models/Post.model')
 
 
 //! Registar
@@ -13,34 +13,30 @@ const showAuthFormSignUp = (req, res = response) => {
 const signup = async (req, res = response) => {
     const errors = []
     const { name, email, password, confirm_password } = req.body
-    const avatar  = `https://avatars.dicebear.com/api/bottts/${name}.svg`
+    const avatar = `https://avatars.dicebear.com/api/bottts/${name}.svg`
     console.log(avatar)
-    if ( password !== confirm_password ) {
-        errors.push({ msg: 'La contraseña no machea'})
+    if (password !== confirm_password) {
+        req.flash('error', 'Las contraseñas no coinciden')
+        res.redirect('/auth/signup')
     }
 
-    if ( password.length < 4 ) {
-        errors.push({ msg: 'La contraseña debe tener al menos 4 caracteres'})
+    if (password.length < 8) {
+        req.flash('error', 'La contraseña debe tener al menos 8 caracteres')
+        res.redirect('/auth/signup')
     }
 
-    if ( errors.length > 0) {
-        return res.render('auth/signup', {
-            errors,
-            name,
-            email
-        })
-    }
+
 
     const userFound = await Auth.findOne({ email })
-    if ( userFound ) {
-        req.flash('error', "El mail ya existe en nuestro registros")
+    if (userFound) {
+        req.flash('error', 'El mail ya existe en nuestro registros')
         return res.redirect('/auth/signup')
     }
 
     const newUser = new Auth({ name, email, password, avatar })
     newUser.password = await newUser.passwordEncrypt(password)
     await newUser.save()
-    req.flash("success", "Se registró correctamente")
+    req.flash('success', 'Se registró correctamente')
     res.redirect('/auth/signin')
 }
 
@@ -52,7 +48,7 @@ const showAuthFormSignIn = (req, res = response) => {
 }
 
 const signin = passport.authenticate('local', {
-    successRedirect: "/posts",
+    successRedirect: '/posts',
     successFlash: {
         type: 'success',
         message: 'Logeado'
@@ -68,7 +64,7 @@ const signin = passport.authenticate('local', {
 //! Logout
 const logout = async (req, res = response, next) => {
     await req.logout((err) => {
-        if( err ) return next()
+        if (err) return next()
         req.flash('success', 'Session cerrada')
         res.redirect('/auth/signin')
     })
@@ -80,18 +76,18 @@ const logout = async (req, res = response, next) => {
 
 const viewProfile = async (req, res = response) => {
     try {
-        const userProfile = await Auth.findOne({_id: req.params.id}).lean(); // Me deja un obj puro de JS
-        const userPost = await Posts.find({user: req.params.id}).lean()
+        const userProfile = await Auth.findOne({ _id: req.params.id }).lean() // Me deja un obj puro de JS
+        const userPost = await Posts.find({ user: req.params.id }).lean()
 
-        const title = `User ${userProfile.name}`;
-        res.status(200).render("profile/profile", {
-          userProfile,
-          title,
-          userPost
-        });
-      } catch (error) {
+        const title = `User ${userProfile.name}`
+        res.status(200).render('profile/profile', {
+            userProfile,
+            title,
+            userPost
+        })
+    } catch (error) {
         console.log('Error Profile', error)
-      }
+    }
 }
 
 

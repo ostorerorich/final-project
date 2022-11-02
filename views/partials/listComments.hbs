@@ -1,0 +1,10 @@
+  <div class="col-12 mt-2">
+    <div class="card">
+      <div class="card-header">Commentarios</div>
+      {{#each comments}}
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{this.author}}: {{this.comment}}</li>
+      </ul>
+      {{/each}}
+    </div>
+  </div>

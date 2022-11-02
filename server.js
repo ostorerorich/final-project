@@ -11,10 +11,10 @@ require('./config/Passport.config')
 const multer = require('multer')
 const path = require('path')
 const uuid = require('uuid')
-//PROBANDO
+
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const Handlebars = require('handlebars')
-//PROBANDO
+
 
 const PORT = process.env.PORT
 const app = express()
@@ -67,7 +67,7 @@ app.use(multer({
 }).single('image'))
 
 
-//Hago publico la carpeta de img
+//Hago publica la carpeta de img
 app.use('/uploads', express.static('uploads'))
 
 app.use((req, res, next) => {
@@ -84,7 +84,7 @@ app.use('/', routerDev) // Solo para desarrollo
 app.use('/', routerPosts)
 
 app.use((req, res) => {
-    res.status(404).render('404', {title: "ruta no encontrada"})
+    res.status(404).render('404', {title: '404 - Ruta no encontrada'})
 })
 
 

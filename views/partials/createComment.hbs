@@ -1,0 +1,16 @@
+  <div class="col-12 mt-2">
+    <div class="card">
+        <div class="card-header">Agregar Comentario</div>
+        <div class="card-body">
+      <form action="/post/{{post._id}}/comment/{{user.name}}/{{post.slug}}" method="POST" class="card-body">
+        <div class="from-group">
+          <textarea class="form-control" id="comment" name="comment" rows="5"
+            placeholder="Ingrese el cuerpo del post"></textarea>
+        </div>
+
+        <button class="btn btn-primary m-4">Enviar</button>
+        
+      </form>
+      </div>
+    </div>
+  </div>
