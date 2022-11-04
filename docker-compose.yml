@@ -6,12 +6,14 @@ services:
     container_name: backend
     restart: always
     build: .
+    working_dir: /app
     ports:
       - 3000:3000
     links:
       - mongo
     volumes:
-      - .:/usr/src/app
+      - .:/app
+      - /app/node_modules
 
   mongo:
     container_name: mongo

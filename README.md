@@ -21,7 +21,7 @@ npm run dev
 5. Ejecutar el comando para levantar el servidor en segundo plano
 
 ```sh
-    docker compose up -d
+    docker compose up --build -d
 ```
 
 
